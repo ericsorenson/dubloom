@@ -80,8 +80,8 @@ function dubloom() {
     }
 
     function drawBackground() {
-        var background_gradient = context.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, height / 1.6);
-        background_gradient.addColorStop(0, '#888');
+        var background_gradient = context.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, height / 1.1);
+        background_gradient.addColorStop(0, '#444');
         background_gradient.addColorStop(1, '#000');
         context.globalAlpha = 1.0;
         context.fillStyle = background_gradient;
@@ -89,11 +89,11 @@ function dubloom() {
     }
 
     function drawCircles() {
-        if(circles.length < 10) {
-            addRandomCircle();
-        }
-        addRandomCircle();
-        circles.shift();
+        //if(circles.length < 5) {
+        //    addRandomCircle();
+        //}
+        //addRandomCircle();
+        //circles.shift();
 
         for(var i=0; i < circles.length; i++) {
             context.fillStyle = circles[i].color;
@@ -102,7 +102,12 @@ function dubloom() {
             context.arc(circles[i].x, circles[i].y, circles[i].radius, 0, Math.PI * 2, true);
             context.closePath();
             context.fill();
-            circles[i].alpha = circles[i].alpha - .1;
+            circles[i].alpha = circles[i].alpha - .02;
+            circles[i].radius = circles[i].radius + 1;
+            if(circles[i].alpha < 0) {
+                circles[i].alpha = 1;
+                circles[i].radius = 1;
+            }
         }
     }
 
@@ -110,11 +115,36 @@ function dubloom() {
         var circle = {};
         circle.x = Math.floor(width * Math.random());
         circle.y = Math.floor(height * Math.random());
-        circle.radius = Math.floor(40 * Math.random());
+        circle.radius = 1;
+        circle.color = 'rgba(150,255,0, 1)';
+        circle.alpha = 1.0;
+        circles.push(circle);
+   }
+
+    function addCircle(x, y) {
+        var circle = {};
+        circle.x = x;
+        circle.y = y;
+        circle.radius = 1;
         circle.color = 'rgba(150,255,0, 1)';
         circle.alpha = 1.0;
         circles.push(circle);
     }
+
+    function eventMouseUp(event) {
+        var mouseX;
+        var mouseY;
+        if(event.layerX || event.layerX == 0) { // Firefox
+            mouseX = event.layerX ;
+            mouseY = event.layerY;
+        } else if(event.offsetX || event.offsetX == 0) { // Opera
+            mouseX = event.offsetX;
+            mouseY = event.offsetY;
+        }
+        addCircle(mouseX, mouseY);var circle = {};
+    }
+
+    canvas.addEventListener("mouseup" ,eventMouseUp, false);
 
     // Begin the entire process
     switchGameState(STATE_INIT);
