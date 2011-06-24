@@ -14,12 +14,15 @@ function dubloom() {
     var context = canvas.getContext('2d');
     var width = canvas.width;
     var height = canvas.height;
-    context.strokeStyle = 'rgba(0,0,0,.5)'
-    context.shadowColor = 'rgba(0,0,0,1)';
-    context.shadowBlur = 20;
-    context.lineWidth = 10;
-    context.lineCap = 'round';
-    
+    //context.strokeStyle = 'rgba(0,0,0,.5)'
+    //context.shadowColor = 'rgba(0,0,0,1)';
+    //context.shadowBlur = 20;
+    //context.lineWidth = 10;
+    //context.lineCap = 'round';
+   
+    var green = 'rgba(150,255,0, 1)';
+    var yellow = 'rgba(255,255,0, 1)';
+    var red = 'rgba(255,0,0, 1)';
 
     // Application States
     const STATE_INIT = 0;
@@ -102,31 +105,37 @@ function dubloom() {
             context.arc(circles[i].x, circles[i].y, circles[i].radius, 0, Math.PI * 2, true);
             context.closePath();
             context.fill();
-            circles[i].alpha = circles[i].alpha - .02;
-            circles[i].radius = circles[i].radius + 1;
+            circles[i].alpha = circles[i].alpha - .005;
+            circles[i].radius = circles[i].radius + .5;
             if(circles[i].alpha < 0) {
                 circles[i].alpha = 1;
                 circles[i].radius = 1;
             }
         }
     }
-
+/*
     function addRandomCircle() {
         var circle = {};
         circle.x = Math.floor(width * Math.random());
         circle.y = Math.floor(height * Math.random());
         circle.radius = 1;
-        circle.color = 'rgba(150,255,0, 1)';
+        circle.color = yellow;
         circle.alpha = 1.0;
         circles.push(circle);
    }
-
+*/
     function addCircle(x, y) {
         var circle = {};
         circle.x = x;
         circle.y = y;
         circle.radius = 1;
-        circle.color = 'rgba(150,255,0, 1)';
+        if(x < width/3) {
+            circle.color = red;
+        } else if(x < 2*width/3) {
+            circle.color = yellow;
+        } else {
+            circle.color = green;
+        }
         circle.alpha = 1.0;
         circles.push(circle);
     }
@@ -148,7 +157,7 @@ function dubloom() {
 
     // Begin the entire process
     switchGameState(STATE_INIT);
-    const FRAME_RATE = 40;
+    const FRAME_RATE = 30;
     var intervalTime = 1000 / FRAME_RATE;
     setInterval( run, intervalTime );
 }
