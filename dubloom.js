@@ -13,13 +13,7 @@ function dubloom() {
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
     var width = canvas.width;
-    var height = canvas.height;
-    //context.strokeStyle = 'rgba(0,0,0,.5)'
-    //context.shadowColor = 'rgba(0,0,0,1)';
-    //context.shadowBlur = 20;
-    //context.lineWidth = 10;
-    //context.lineCap = 'round';
-   
+    var height = canvas.height;  
     var green = 'rgba(150,255,0, 1)';
     var yellow = 'rgba(255,255,0, 1)';
     var red = 'rgba(255,0,0, 1)';
@@ -69,6 +63,17 @@ function dubloom() {
 
     function waitForLoad() {
         console.log("wait for load");
+
+        audioLibParams = {
+            test : ["square",0.0000,0.4000,0.0000,0.1220,0.0000,0.2060,315.0000,1399.0000,2400.0000,-0.9120,0.0000,0.0000,0.0100,0.0003,0.0000,0.0000,0.0000,0.0915,0.1960,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0930,0.0000],
+            explosion : ["noise",0.0000,0.4000,0.0000,0.3440,0.3720,0.4400,20.0000,1792.0000,2400.0000,-0.2040,0.0000,0.0000,0.0100,0.0003,0.0000,0.0000,0.0000,0.0000,0.0000,0.7872,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000],
+            tone : ["sine",0.0000,0.5000,0.0000,2.0000,1.0000,1.0000,20.0000,400.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000]
+            };
+
+        samples = jsfxlib.createWaves(audioLibParams);
+        //samples.test.play();
+        //samples.explosion.play();
+
         switchGameState(STATE_TITLE);
     }
 
@@ -92,12 +97,6 @@ function dubloom() {
     }
 
     function drawCircles() {
-        //if(circles.length < 5) {
-        //    addRandomCircle();
-        //}
-        //addRandomCircle();
-        //circles.shift();
-
         for(var i=0; i < circles.length; i++) {
             context.fillStyle = circles[i].color;
             context.globalAlpha = circles[i].alpha;
@@ -110,20 +109,11 @@ function dubloom() {
             if(circles[i].alpha < 0) {
                 circles[i].alpha = 1;
                 circles[i].radius = 1;
+                samples.tone.play();
             }
         }
     }
-/*
-    function addRandomCircle() {
-        var circle = {};
-        circle.x = Math.floor(width * Math.random());
-        circle.y = Math.floor(height * Math.random());
-        circle.radius = 1;
-        circle.color = yellow;
-        circle.alpha = 1.0;
-        circles.push(circle);
-   }
-*/
+
     function addCircle(x, y) {
         var circle = {};
         circle.x = x;
@@ -138,6 +128,7 @@ function dubloom() {
         }
         circle.alpha = 1.0;
         circles.push(circle);
+        samples.tone.play();
     }
 
     function eventMouseUp(event) {
