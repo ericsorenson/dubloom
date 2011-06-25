@@ -14,73 +14,36 @@ function dubloom() {
     var context = canvas.getContext('2d');
     var width = canvas.width;
     var height = canvas.height;  
-    var green = 'rgba(150,255,0, 1)';
+
+    // circle colors
+    var green = 'rgba(50,255,0, 1)';
+    var lightGreen = 'rgba(150,255,0, 1)';
+    var lighterGreen = 'rgba(200,255,0, 1)';
     var yellow = 'rgba(255,255,0, 1)';
+    var orange = 'rgba(255,200,0, 1)';
     var red = 'rgba(255,0,0, 1)';
 
-    // Application States
+    // application states
     const STATE_INIT = 0;
     const STATE_WAIT = 1;
     const STATE_WAIT_FOR_LOAD = 2;
     const STATE_TITLE = 3;
     const STATE_PLAY = 4;
 
+    // notes
+    const NOTE_1 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,100.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    const NOTE_2 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,200.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    const NOTE_3 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,400.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    const NOTE_4 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,600.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    const NOTE_5 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,800.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    const NOTE_6 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,1000.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+
+
+    var backgroundGradient = context.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, height / 1.1);
+    backgroundGradient.addColorStop(0, '#444');
+    backgroundGradient.addColorStop(1, '#000');
+
     var circles = [];
-    
-    function run() {
-        currentGameStateFunction();
-    }
-    
-    function switchGameState(newState) {
-        currentGameState = newState;
-        switch (currentGameState) {
-            case STATE_INIT:
-                currentGameStateFunction = init;
-                break;
-            case STATE_WAIT:
-                currentGameStateFunction = wait;
-                break;
-            case STATE_WAIT_FOR_LOAD:
-                currentGameStateFunction = waitForLoad;
-                break;
-            case STATE_TITLE:
-                currentGameStateFunction = title;
-                break;
-            case STATE_PLAY:
-                currentGameStateFunction = play;
-                break;
-        }
-    }
-
-    function init() {
-        console.log("init");
-        switchGameState(STATE_WAIT_FOR_LOAD);
-    }
-
-    function wait() {
-        console.log("wait");
-    }
-
-    function waitForLoad() {
-        console.log("wait for load");
-
-        audioLibParams = {
-            test : ["square",0.0000,0.4000,0.0000,0.1220,0.0000,0.2060,315.0000,1399.0000,2400.0000,-0.9120,0.0000,0.0000,0.0100,0.0003,0.0000,0.0000,0.0000,0.0915,0.1960,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0930,0.0000],
-            explosion : ["noise",0.0000,0.4000,0.0000,0.3440,0.3720,0.4400,20.0000,1792.0000,2400.0000,-0.2040,0.0000,0.0000,0.0100,0.0003,0.0000,0.0000,0.0000,0.0000,0.0000,0.7872,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000],
-            tone : ["sine",0.0000,0.5000,0.0000,2.0000,1.0000,1.0000,20.0000,400.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000]
-            };
-
-        samples = jsfxlib.createWaves(audioLibParams);
-        //samples.test.play();
-        //samples.explosion.play();
-
-        switchGameState(STATE_TITLE);
-    }
-
-    function title() {
-        console.log("title");
-        switchGameState(STATE_PLAY);
-    }
 
     function play() {
         drawBackground();  
@@ -88,11 +51,8 @@ function dubloom() {
     }
 
     function drawBackground() {
-        var background_gradient = context.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, height / 1.1);
-        background_gradient.addColorStop(0, '#444');
-        background_gradient.addColorStop(1, '#000');
         context.globalAlpha = 1.0;
-        context.fillStyle = background_gradient;
+        context.fillStyle = backgroundGradient;
         context.fillRect(0, 0, width, height);
     }
 
@@ -109,7 +69,7 @@ function dubloom() {
             if(circles[i].alpha < 0) {
                 circles[i].alpha = 1;
                 circles[i].radius = 1;
-                samples.tone.play();
+                circles[i].note.play();
             }
         }
     }
@@ -119,16 +79,37 @@ function dubloom() {
         circle.x = x;
         circle.y = y;
         circle.radius = 1;
-        if(x < width/3) {
+        if(x < width/6) {
             circle.color = red;
-        } else if(x < 2*width/3) {
+            circle.noteParams = NOTE_1;
+        } else if(x < 2*width/6) {
+            circle.color = orange;
+            circle.noteParams = NOTE_2;
+        } else if(x < 3*width/6) {
             circle.color = yellow;
+            circle.noteParams = NOTE_3;
+        } else if(x < 4*width/6) {
+            circle.color = lighterGreen;
+            circle.noteParams = NOTE_4;
+        } else if(x < 5*width/6) {
+            circle.color = lightGreen;
+            circle.noteParams = NOTE_5;
         } else {
             circle.color = green;
+            circle.noteParams = NOTE_6;
         }
         circle.alpha = 1.0;
+        
+        // create the sound for this circle
+        var params = jsfxlib.arrayToParams(circle.noteParams);
+        var data = jsfx.generate(params);
+        circle.note = audio.make(data);
+
+        // play the sound as the user clicks
+        circle.note.play();
+
+        // add the new circle to the collection
         circles.push(circle);
-        samples.tone.play();
     }
 
     function eventMouseUp(event) {
@@ -141,15 +122,14 @@ function dubloom() {
             mouseX = event.offsetX;
             mouseY = event.offsetY;
         }
-        addCircle(mouseX, mouseY);var circle = {};
+        addCircle(mouseX, mouseY);
     }
 
-    canvas.addEventListener("mouseup" ,eventMouseUp, false);
+    canvas.addEventListener("mouseup", eventMouseUp, false);
 
-    // Begin the entire process
-    switchGameState(STATE_INIT);
+    // begin the entire process
     const FRAME_RATE = 30;
     var intervalTime = 1000 / FRAME_RATE;
-    setInterval( run, intervalTime );
+    setInterval( play, intervalTime );
 }
 
