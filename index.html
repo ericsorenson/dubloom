@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Dubharmonic - DUBloom</title>
+    <title>Dubharmonic &bull; DUBloom</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="favicon.ico" />
     <script src="modernizr-1.7.min.js"></script>
@@ -12,9 +12,27 @@
     <script src="dubloom.js"></script>
 </head>
 <body>
+    <header>
+        <h1>DUBloom</h1>
+    </header>
     <canvas id="canvas" height="400" width="648">
         Your browser doesn't support the HTML5 Canvas. Please upgrade your browser!
     </canvas>
+    <div>
+        <input class="button" type="button" value="reset" onclick="alert('reset not working yet!');">
+    </div>
+    <article id="about">
+        <div id="about-inner">
+            <p>About</p>
+            <ul>
+                <li>DUBloom is an HTML5 Canvas application inspired by the <a href="http://itunes.apple.com/app/bloom/id292792586">Bloom iOS app</a> from Brian Eno and Peter Chilvers.
+                <li>100% JavaScript! This page downloads no images or audio files.</li>
+                <li>Code available on github.com at <a href="https://github.com/dubharmonic/DUBloom">https://github.com/dubharmonic/DUBloom</a></li>
+                <li>The visuals and audio will work on the latest versions of all popular desktop browsers. Currently mobile browsers only support the visuals.</li>
+            </ul>
+        </div>
+    </article>
+    <footer>Copyright 2011 Eric Sorenson</footer>
 </body>
 </html>
 

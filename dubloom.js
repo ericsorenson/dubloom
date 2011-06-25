@@ -115,6 +115,7 @@ function dubloom() {
     function eventMouseUp(event) {
         var mouseX;
         var mouseY;
+
         if(event.layerX || event.layerX == 0) { // Firefox
             mouseX = event.layerX ;
             mouseY = event.layerY;
@@ -122,10 +123,18 @@ function dubloom() {
             mouseX = event.offsetX;
             mouseY = event.offsetY;
         }
+
+        mouseX -= canvas.offsetLeft;
+        mouseY -= canvas.offsetTop;
+
         addCircle(mouseX, mouseY);
     }
 
     canvas.addEventListener("mouseup", eventMouseUp, false);
+
+    function reset() {
+        circles.length = 0;
+    }
 
     // begin the entire process
     const FRAME_RATE = 30;
