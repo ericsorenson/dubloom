@@ -64,7 +64,9 @@ footer {
 	-moz-border-radius: 10px;
 	border-radius: 10px;    
     position: relative;
-    left: -300px;
-    top: -40px;   
+}
+
+#button_wrapper {
+    margin: 10px; 
 }
 
