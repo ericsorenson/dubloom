@@ -20,20 +20,20 @@ function dubloom() {
     var circles = [];
 
     // circle colors
-    const green = 'rgba(50,255,0, 1)';
-    const lightGreen = 'rgba(150,255,0, 1)';
-    const lighterGreen = 'rgba(200,255,0, 1)';
-    const yellow = 'rgba(255,255,0, 1)';
-    const orange = 'rgba(255,200,0, 1)';
-    const red = 'rgba(255,0,0, 1)';
+    var green = 'rgba(50,255,0, 1)';
+    var lightGreen = 'rgba(150,255,0, 1)';
+    var lighterGreen = 'rgba(200,255,0, 1)';
+    var yellow = 'rgba(255,255,0, 1)';
+    var orange = 'rgba(255,200,0, 1)';
+    var red = 'rgba(255,0,0, 1)';
 
     // notes
-    const note1 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,100.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
-    const note2 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,200.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
-    const note3 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,400.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
-    const note4 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,600.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
-    const note5 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,800.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
-    const note6 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,1000.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    var note1 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,100.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    var note2 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,200.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    var note3 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,400.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    var note4 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,600.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    var note5 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,800.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    var note6 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,1000.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
 
     function play() {
         drawBackground();  
@@ -47,15 +47,15 @@ function dubloom() {
     }
 
     function drawCircles() {
-        for(var i=0; i < circles.length; i++) {
+        for (var i=0; i < circles.length; i++) {
             context.fillStyle = circles[i].color;
             context.globalAlpha = circles[i].alpha;
             context.beginPath();
-            context.arc(circles[i].x, circles[i].y, circles[i].radius, 0, Math.PI * 2, true);
+            context.arc(circles[i].x, circles[i].y, circles[i].radius, 0, Math.PI*2, true);
             context.closePath();
             context.fill();
-            circles[i].alpha = circles[i].alpha - .005;
-            circles[i].radius = circles[i].radius + .5;
+            circles[i].alpha -= .005;
+            circles[i].radius += .5;
             if(circles[i].alpha < 0) {
                 circles[i].alpha = 1;
                 circles[i].radius = 1;
@@ -69,19 +69,19 @@ function dubloom() {
         circle.x = x;
         circle.y = y;
         circle.radius = 1;
-        if(x < width/6) {
+        if (x < width/6) {
             circle.color = red;
             circle.noteParams = note1;
-        } else if(x < 2*width/6) {
+        } else if (x < 2*width/6) {
             circle.color = orange;
             circle.noteParams = note2;
-        } else if(x < 3*width/6) {
+        } else if (x < 3*width/6) {
             circle.color = yellow;
             circle.noteParams = note3;
-        } else if(x < 4*width/6) {
+        } else if (x < 4*width/6) {
             circle.color = lighterGreen;
             circle.noteParams = note4;
-        } else if(x < 5*width/6) {
+        } else if (x < 5*width/6) {
             circle.color = lightGreen;
             circle.noteParams = note5;
         } else {
@@ -106,10 +106,10 @@ function dubloom() {
         var mouseX;
         var mouseY;
 
-        if(event.layerX || event.layerX == 0) { // Firefox
+        if (event.layerX || event.layerX == 0) { // Firefox
             mouseX = event.layerX ;
             mouseY = event.layerY;
-        } else if(event.offsetX || event.offsetX == 0) { // Opera
+        } else if (event.offsetX || event.offsetX == 0) { // Opera
             mouseX = event.offsetX;
             mouseY = event.offsetY;
         }
@@ -127,7 +127,7 @@ function dubloom() {
     }
 
     // begin the entire process
-    const FRAME_RATE = 30;
+    var FRAME_RATE = 30;
     var intervalTime = 1000 / FRAME_RATE;
     setInterval( play, intervalTime );
 }
