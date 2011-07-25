@@ -3,9 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <title>Dubharmonic &bull; DUBloom</title>
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="favicon.ico" />
-    <script src="modernizr-1.7.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="jsfx/audio.js"></script>
     <script src="jsfx/jsfx.js"></script>
     <script src="jsfx/jsfxlib.js"></script>
@@ -16,28 +19,30 @@
         <h1>DUBloom</h1>
     </header>
     <canvas id="canvas" height="400" width="648">
-        Your browser doesn't support the HTML5 Canvas. Please upgrade your browser!
+        <p>Your browser doesn't support the HTML5 Canvas. Please upgrade your browser!</p>
     </canvas>
-    <div id="button_wrapper">
-        <input class="button" type="button" value="reset" onclick="location.reload(true);">
-    </div>
     <article id="about">
-        <div id="about-inner">
-            <p>How it works</p>
-            <ul>
-                <li>Click or tap on the rectangle above to create a tone and a circle.</li>
-                <li>The rectangle is divided into 6 sections, each with different frequencies and colors.</li>
-            </ul>
-            <p>About</p>
-            <ul>
-                <li>DUBloom is an HTML5 Canvas application inspired by the <a href="http://itunes.apple.com/app/bloom/id292792586">Bloom iOS app</a> from Brian Eno and Peter Chilvers.
-                <li>100% JavaScript! This page downloads no images or audio files.</li>
-                <li>Code available on github.com at <a href="https://github.com/dubharmonic/DUBloom">https://github.com/dubharmonic/DUBloom</a></li>
-                <li>The visuals and audio will work on the latest versions of all popular desktop browsers. Currently mobile browsers only support the visuals.</li>
-            </ul>
-        </div>
+        <p>How it works</p>
+        <ul>
+            <li>Click or tap on the rectangle above to create a tone and a circle.</li>
+            <li>The rectangle is divided into 6 sections, each with different frequencies and colors.</li>
+        </ul>
+        <p>About</p>
+        <ul>
+            <li>DUBloom is an HTML5 Canvas application inspired by the <a href="http://itunes.apple.com/app/bloom/id292792586">Bloom iOS app</a> from Brian Eno and Peter Chilvers.</li>
+            <li>100% JavaScript! This page downloads no images or audio files.</li>
+            <li>Code available on github.com at <a href="https://github.com/dubharmonic/DUBloom">https://github.com/dubharmonic/DUBloom</a></li>
+            <li>The visuals and audio will work on the latest versions of all popular desktop browsers. Currently mobile browsers only support the visuals.</li>
+        </ul>
+        <p>Known Issues</p>
+        <ul>
+            <li>Chrome 12 has inaccurate X and Y offsets.</li>
+            <li>Safari 5.1 has a slight delay on the first tone.</li>
+        </ul>
     </article>
-    <footer>Copyright 2011 Eric Sorenson</footer>
+    <footer>
+        <p>Copyright 2011 Eric Sorenson &nbsp;&bull;&nbsp; <a href="http://dubharmonic.com">dubharmonic.com</a></p>
+    </footer>
 </body>
 </html>
 
