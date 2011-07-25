@@ -109,15 +109,14 @@ function dubloom() {
         if (event.layerX || event.layerX == 0) { // Firefox
             mouseX = event.layerX ;
             mouseY = event.layerY;
-        } else if (event.offsetX || event.offsetX == 0) { // Opera or WebKit
-
+        } else if (event.offsetX || event.offsetX == 0) { // Opera
             mouseX = event.offsetX;
             mouseY = event.offsetY;
         }
         
-        // fixes positioning in Chrome
-        // mouseX -= canvas.offsetLeft;
-        // mouseY -= canvas.offsetTop;
+        // fixes positioning when canvas doesn't start in the upper left corner
+        mouseX -= canvas.offsetLeft;
+        mouseY -= canvas.offsetTop;
 
         addCircle(mouseX, mouseY);
     }

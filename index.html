@@ -8,6 +8,7 @@
     <![endif]-->
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="favicon.ico" />
+	<link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script src="jsfx/audio.js"></script>
     <script src="jsfx/jsfx.js"></script>
@@ -16,6 +17,9 @@
 </head>
 <body>
     <header>
+	    <!--[if lt IE 9]>
+            <p>Best viewed on a modern browser! Please upgrade to Chrome, Safari, FireFox or Internet Explorer 9!</p>
+        <![endif]-->
         <h1>DUBloom</h1>
     </header>
     <canvas id="canvas" height="400" width="648">
@@ -36,8 +40,7 @@
         </ul>
         <p>Known Issues</p>
         <ul>
-            <li>Chrome 12 has inaccurate X and Y offsets.</li>
-            <li>Safari 5.1 has a slight delay on the first tone.</li>
+            <li>Incorrect X and Y offsets in Safari 5.1 and Opera.</li>
         </ul>
     </article>
     <footer>
