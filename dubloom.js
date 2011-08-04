@@ -97,6 +97,7 @@ function dubloom() {
         circles.push(circle);
     }
 
+<<<<<<< HEAD
     function eventMouseUp(e) {
         var x;
         var y;
@@ -104,14 +105,32 @@ function dubloom() {
         if (e.pageX || e.pageY) { 
             x = e.pageX;
             y = e.pageY;
+=======
+    function eventMouseUp(event) {
+        var mouseX;
+        var mouseY;
+
+        if (event.layerX || event.layerX == 0) { // Firefox
+            mouseX = event.layerX ;
+            mouseY = event.layerY;
+        } else if (event.offsetX || event.offsetX == 0) { // Opera
+            mouseX = event.offsetX;
+            mouseY = event.offsetY;
+>>>>>>> 6cfbcff09796da16d40a38f50fa0e3577d5671ce
         }
         else { 
             x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
             y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
         } 
         
+<<<<<<< HEAD
         x -= canvas.offsetLeft;
         y -= canvas.offsetTop;
+=======
+        // fixes positioning when canvas doesn't start in the upper left corner
+        mouseX -= canvas.offsetLeft;
+        mouseY -= canvas.offsetTop;
+>>>>>>> 6cfbcff09796da16d40a38f50fa0e3577d5671ce
 
         addCircle(x, y);
     }
