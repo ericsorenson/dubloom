@@ -1,9 +1,4 @@
 function dubloom() {
-
-    // quit if canvas tag not supported
-    if (!Modernizr.canvas) {
-        return false;
-    }
     
     // create references to the canvas
     var canvas = document.getElementById('canvas');
@@ -35,11 +30,6 @@ function dubloom() {
     var note5 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,800.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
     var note6 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,1000.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
 
-    function play() {
-        drawBackground();  
-        drawCircles();
-    }
-
     function drawBackground() {
         context.globalAlpha = 1.0;
         context.fillStyle = backgroundGradient;
@@ -54,14 +44,19 @@ function dubloom() {
             context.arc(circles[i].x, circles[i].y, circles[i].radius, 0, Math.PI*2, true);
             context.closePath();
             context.fill();
-            circles[i].alpha -= .005;
-            circles[i].radius += .5;
+            circles[i].alpha -= 0.005;
+            circles[i].radius += 0.5;
             if(circles[i].alpha < 0) {
                 circles[i].alpha = 1;
                 circles[i].radius = 1;
                 circles[i].note.play();
             }
         }
+    }
+    
+    function play() {
+        drawBackground();  
+        drawCircles();
     }
 
     function addCircle(x, y) {
@@ -102,35 +97,31 @@ function dubloom() {
         circles.push(circle);
     }
 
-    function eventMouseUp(event) {
-        var mouseX;
-        var mouseY;
-
-        if (event.layerX || event.layerX == 0) { // Firefox
-            mouseX = event.layerX ;
-            mouseY = event.layerY;
-        } else if (event.offsetX || event.offsetX == 0) { // Opera or WebKit
-
-            mouseX = event.offsetX;
-            mouseY = event.offsetY;
-        }
+    function eventMouseUp(e) {
+        var x;
+        var y;
         
-        // fixes positioning in Chrome
-        // mouseX -= canvas.offsetLeft;
-        // mouseY -= canvas.offsetTop;
+        if (e.pageX || e.pageY) { 
+            x = e.pageX;
+            y = e.pageY;
+        }
+        else { 
+            x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+            y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+        } 
+        
+        x -= canvas.offsetLeft;
+        y -= canvas.offsetTop;
 
-        addCircle(mouseX, mouseY);
+        addCircle(x, y);
     }
 
+    // listen for clicks
     canvas.addEventListener("mouseup", eventMouseUp, false);
 
-    function reset() {
-        circles.length = 0;
-    }
-
-    // begin the entire process
-    var FRAME_RATE = 30;
-    var intervalTime = 1000 / FRAME_RATE;
+    // begin
+    var frameRate = 30;
+    var intervalTime = 1000 / frameRate;
     setInterval( play, intervalTime );
 }
 
@@ -139,4 +130,3 @@ window.addEventListener('load', eventWindowLoaded, false);
 function eventWindowLoaded() {
     dubloom();
 }
-
