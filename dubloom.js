@@ -21,14 +21,16 @@ function dubloom() {
     var yellow = 'rgba(255,255,0, 1)';
     var orange = 'rgba(255,200,0, 1)';
     var red = 'rgba(255,0,0, 1)';
-
-    // notes
-    var note1 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,100.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
-    var note2 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,200.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
-    var note3 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,400.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
-    var note4 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,600.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
-    var note5 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,800.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
-    var note6 = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,1000.0000,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    
+    var middleC = 261.6260;
+    var waves = [];
+    
+    waves[0] = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,middleC,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    waves[1] = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,middleC*2,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    waves[2] = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,middleC*3,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    waves[3] = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,middleC*4,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    waves[4] = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,middleC*5,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
+    waves[5] = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,middleC*6,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
 
     function drawBackground() {
         context.globalAlpha = 1.0;
@@ -46,7 +48,7 @@ function dubloom() {
             context.fill();
             circles[i].alpha -= 0.005;
             circles[i].radius += 0.5;
-            if(circles[i].alpha < 0) {
+            if (circles[i].alpha < 0) {
                 circles[i].alpha = 1;
                 circles[i].radius = 1;
                 circles[i].note.play();
@@ -66,22 +68,22 @@ function dubloom() {
         circle.radius = 1;
         if (x < width/6) {
             circle.color = red;
-            circle.noteParams = note1;
+            circle.noteParams = waves[0];
         } else if (x < 2*width/6) {
             circle.color = orange;
-            circle.noteParams = note2;
+            circle.noteParams = waves[1];
         } else if (x < 3*width/6) {
             circle.color = yellow;
-            circle.noteParams = note3;
+            circle.noteParams = waves[2];
         } else if (x < 4*width/6) {
             circle.color = lighterGreen;
-            circle.noteParams = note4;
+            circle.noteParams = waves[3];
         } else if (x < 5*width/6) {
             circle.color = lightGreen;
-            circle.noteParams = note5;
+            circle.noteParams = waves[4];
         } else {
             circle.color = green;
-            circle.noteParams = note6;
+            circle.noteParams = waves[5];
         }
         circle.alpha = 1.0;
         
@@ -97,16 +99,16 @@ function dubloom() {
         circles.push(circle);
     }
 
-    function eventMouseUp(e) {
+    function eventMouseUp(event) {
         var x;
         var y;
         
-        if (e.pageX || e.pageY) { 
-            x = e.pageX;
-            y = e.pageY;
+        if (event.pageX || event.pageY) { 
+            x = event.pageX;
+            y = event.pageY;
         } else { 
-            x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
-            y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+            x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+            y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
         } 
         
         x -= canvas.offsetLeft;
@@ -124,8 +126,12 @@ function dubloom() {
     setInterval( play, intervalTime );
 }
 
-window.addEventListener('load', eventWindowLoaded, false);    
-
-function eventWindowLoaded() {
-    dubloom();
+function supportsCanvas() {
+    return !!document.createElement('canvas').getContext;
 }
+
+$(document).ready(function() {
+    if (supportsCanvas()) {
+        dubloom();
+    }
+});

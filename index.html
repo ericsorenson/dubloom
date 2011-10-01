@@ -6,38 +6,38 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
     <header>
-        <!--[if lt IE 9]>
-            <p>Best viewed on a modern browser! Please upgrade to Chrome, Safari, FireFox or Internet Explorer 9!</p>
-        <![endif]-->
         <h1>DUBloom</h1>
     </header>
     <canvas id="canvas" height="400" width="648">
         <p>Your browser doesn't support the HTML5 Canvas. Please upgrade your browser!</p>
     </canvas>
     <article id="about">
-        <p>How it works</p>
+        <h2>How it works</h2>
         <ul>
             <li>Click or tap on the rectangle above to create a tone and a circle.</li>
-            <li>The rectangle is divided into 6 sections, each with different frequencies and colors.</li>
+            <li>The rectangle is divided into 6 sections, each with a different frequency and color.</li>
         </ul>
-        <p>About</p>
+        <h2>About</h2>
         <ul>
             <li>DUBloom is an HTML5 Canvas application inspired by the <a href="http://itunes.apple.com/app/bloom/id292792586">Bloom iOS app</a> from Brian Eno and Peter Chilvers.</li>
             <li>100% JavaScript! This page downloads no images or audio files.</li>
             <li>Code available on github.com at <a href="https://github.com/dubharmonic/DUBloom">https://github.com/dubharmonic/DUBloom</a></li>
-            <li>The visuals and audio will work on the latest versions of all popular desktop browsers. Currently mobile browsers only support the visuals.</li>
+            <li>Verified functional on the latest desktop versions of Chrome, Safari, FireFox and Opera.</li>
         </ul>
     </article>
     <footer>
         <p>Copyright 2011 Eric Sorenson &nbsp;&bull;&nbsp; <a href="http://dubharmonic.com">dubharmonic.com</a></p>
     </footer>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
     <script src="jsfx/audio.js"></script>
     <script src="jsfx/jsfx.js"></script>
     <script src="jsfx/jsfxlib.js"></script>
     <script src="dubloom.js"></script>
 </body>
 </html>
-
