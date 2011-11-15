@@ -1,4 +1,4 @@
-function dubloom() {
+var dubloom = function() {
     
     // create references to the canvas
     var canvas = document.getElementById('canvas');
@@ -8,8 +8,8 @@ function dubloom() {
 
     // background
     var backgroundGradient = context.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, height / 1.1);
-    backgroundGradient.addColorStop(0, '#444');
-    backgroundGradient.addColorStop(1, '#000');
+    backgroundGradient.addColorStop(0, '#333');
+    backgroundGradient.addColorStop(1, '#111');
 
     // circle collection
     var circles = [];
@@ -32,13 +32,13 @@ function dubloom() {
     waves[4] = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,middleC*5,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
     waves[5] = ["sine",0.0000,0.1000,0.0000,2.0000,1.0000,1.0000,20.0000,middleC*6,2400.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,1.0000,0.0000,0.0000,0.0000,0.0000];
 
-    function drawBackground() {
+    var drawBackground = function() {
         context.globalAlpha = 1.0;
         context.fillStyle = backgroundGradient;
         context.fillRect(0, 0, width, height);
     }
 
-    function drawCircles() {
+    var drawCircles = function() {
         for (var i=0; i < circles.length; i++) {
             context.fillStyle = circles[i].color;
             context.globalAlpha = circles[i].alpha;
@@ -56,12 +56,12 @@ function dubloom() {
         }
     }
     
-    function play() {
+    var play = function() {
         drawBackground();  
         drawCircles();
     }
 
-    function addCircle(x, y) {
+    var addCircle = function(x, y) {
         var circle = {};
         circle.x = x;
         circle.y = y;
@@ -99,7 +99,7 @@ function dubloom() {
         circles.push(circle);
     }
 
-    function eventMouseUp(event) {
+    var eventMouseUp = function(event) {
         var x;
         var y;
         
@@ -126,12 +126,12 @@ function dubloom() {
     setInterval( play, intervalTime );
 }
 
-function supportsCanvas() {
+var supportsCanvas = function() {
     return !!document.createElement('canvas').getContext;
 }
 
 $(document).ready(function() {
-    if (supportsCanvas()) {
+    if (supportsCanvas()) { 
         dubloom();
     }
 });
