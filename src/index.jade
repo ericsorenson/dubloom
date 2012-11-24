@@ -1,0 +1,34 @@
+!!! 5
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title DUBloom
+    script(src="//use.typekit.net/cii0oya.js")
+    script
+      try{Typekit.load();}catch(e){}
+    link(rel="stylesheet", href="style.css")
+  body
+    .wrapper
+      img.logo(src="logo.png")
+      h1 DUBloom
+      canvas#dubloom(width="500", height="312")
+      h2 How it works
+      p Click or tap on the rectangle above to create a tone and a circle. The rectangle is divided into 6 sections, each with a different frequency and color.
+      h2 About
+      p
+        :markdown
+          DUBloom is an HTML5 Canvas  / Web Audio application inspired by the
+          [Bloom iOS app](http://itunes.apple.com/app/bloom/id292792586)
+          from Brian Eno and Peter Chilvers. For now, only works on Chrome and Safari.
+      p.copyright &#169; 2012 Eric Sorenson
+    script(src="dubloom.js")
+    script(src="http://www.google-analytics.com/ga.js")
+    script
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-10833223-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
